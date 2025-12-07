@@ -44,10 +44,12 @@ nav a:hover {
 }
 @media (max-width: 768px) {
   nav ul {
-    display: none;
+    gap: 10px;
   }
-  .menu-btn {
-    display: block;
+
+  nav ul li a {
+    font-size: 0.8rem;
+    padding: 5px 8px;
   }
   .hero h1 {
     font-size: 2rem;

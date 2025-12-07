@@ -218,12 +218,13 @@ footer {
 
 @media (max-width: 768px) {
   nav ul {
-    display: none;
-  }
-  .menu-btn {
-    display: block;
+    gap: 10px;
   }
 
+  nav ul li a {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
   .hero h1 {
     font-size: 2rem;
   }
@@ -231,14 +232,13 @@ footer {
     font-size: 1rem;
   }
 
-  .card {
-    flex: 0 0 100%;
-    max-width: 500px;
+  .btn-primary {
+    padding: 10px 20px;
   }
+}
 
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+.footer-container {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
