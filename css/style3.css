@@ -37,6 +37,7 @@ nav a {
 }
 nav a:hover {
   color: rgba(0, 36, 77, 0.39);
+  border-bottom: 2px solid lightcoral;
 }
 #logo {
   font-family: "Fredoka", sans-serif;
@@ -202,7 +203,7 @@ footer {
   color: rgb(61, 39, 18);
 }
 .footer-contact p a:hover {
-   color: rgba(0, 36, 77, 0.39);
+  color: rgba(0, 36, 77, 0.39);
 }
 
 .footer-bottom {
