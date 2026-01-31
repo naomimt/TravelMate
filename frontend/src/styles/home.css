@@ -1,0 +1,27 @@
+.hero--home {
+	background-position: center;
+}
+
+.testimonials {
+	padding: 60px 0 80px;
+	background-color: #fff;
+}
+
+.testimonials-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+}
+
+.testimonials .card2 {
+	flex: 0 0 300px;
+	max-width: 340px;
+}
+
+@media (max-width: 768px) {
+	.testimonials .card2 {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+}

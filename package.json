@@ -1,0 +1,27 @@
+{
+    "name": "travelmate-backend",
+    "version": "1.0.0",
+    "description": "Travel Agency Backend API",
+    "main": "backend/backend.js",
+    "type": "module",
+    "scripts": {
+        "start": "node backend/backend.js",
+        "dev": "node --watch backend/backend.js"
+    },
+    "keywords": [
+        "travel",
+        "agency",
+        "booking",
+        "api"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^6.0.0",
+        "dotenv": "^16.3.1",
+        "jsonwebtoken": "^9.0.2",
+        "pg": "^8.11.3",
+        "sequelize": "^6.35.0",
+        "sequelize-cli": "^6.6.0"
+    }
+}
