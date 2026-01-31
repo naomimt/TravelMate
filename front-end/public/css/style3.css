@@ -1,0 +1,237 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: lightcyan;
+  border-radius: 3px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 50px;
+}
+nav a {
+  text-decoration: none;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+nav a:hover {
+  color: rgba(0, 36, 77, 0.39);
+  border-bottom: 2px solid lightcoral;
+}
+#logo {
+  font-family: "Fredoka", sans-serif;
+  font-size: 27px;
+}
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+main {
+  flex-grow: 1;
+  background-color: white;
+  padding: 40px 5%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f5fffa;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 2rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.contact-container p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.info-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: lightcoral;
+}
+.info-item p a:hover {
+  color: burlywood;
+}
+.info-item p a {
+  text-decoration: none;
+  color: black;
+}
+
+.info-item p {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: lightcyan;
+  outline: none;
+  box-shadow: 0 0 5px rgba(173, 216, 230, 0.5);
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  background-color: lightcyan;
+  color: black;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #a4fcfc;
+  transform: translateY(-2px);
+}
+
+footer {
+  background-color: lightcyan;
+  color: #333;
+  padding: 25px 10%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-about h3 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.footer-about p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.footer-contact h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.footer-contact p {
+  font-size: 0.9rem;
+  margin: 2px 0;
+}
+
+.footer-contact p a {
+  text-decoration: none;
+  color: rgb(61, 39, 18);
+}
+.footer-contact p a:hover {
+  color: rgba(0, 36, 77, 0.39);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #555;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    gap: 10px;
+  }
+
+  nav ul li a {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    padding: 10px 20px;
+  }
+}

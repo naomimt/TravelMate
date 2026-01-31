@@ -1,0 +1,295 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 5%;
+  background-color: var(--primary);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 32px;
+}
+
+nav a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #111;
+  padding: 6px 10px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+nav a:hover {
+  color: rgba(0, 36, 77, 0.55);
+  border-bottom: 2px solid var(--accent);
+}
+
+#logo {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.hero--tall {
+  min-height: 90vh;
+}
+
+.hero--short {
+  min-height: 55vh;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-family: "Fredoka", sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+  margin-bottom: 22px;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #111;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
+  box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.container {
+  width: min(1200px, 90vw);
+  margin: 0 auto;
+}
+
+.des {
+  padding: 60px 0;
+  background-color: #fff;
+}
+
+.des h2,
+.testimonials h2 {
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.des-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  flex: 0 0 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  padding: 15px 15px 6px;
+  font-family: "Poppins", sans-serif;
+}
+
+.card p {
+  font-size: 0.98rem;
+  padding: 0 15px 20px;
+  color: var(--muted);
+  text-align: justify;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.card2 {
+  background: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s ease;
+  padding: 18px;
+}
+
+.card2:hover {
+  transform: translateY(-3px);
+}
+
+.card2 p {
+  font-size: 0.98rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 12px;
+  text-align: justify;
+}
+
+.card2 h3 {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+footer {
+  background-color: var(--primary);
+  color: #333;
+  padding: 25px 5%;
+  margin-top: auto;
+  font-family: "Montserrat", sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-about h3 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.footer-about p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.footer-contact h4 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.footer-contact p {
+  font-size: 0.95rem;
+  margin: 2px 0;
+}
+
+.footer-contact a {
+  color: #3d2712;
+}
+
+.footer-contact a:hover {
+  color: rgba(0, 36, 77, 0.5);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #555;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 10px;
+}
+
+@media (max-width: 1000px) {
+  .card {
+    flex: 0 0 calc(50% - 30px);
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 14px 5%;
+  }
+
+  nav ul {
+    gap: 12px;
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
+
+  .card,
+  .card2 {
+    flex: 0 0 100%;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .hero--tall {
+    min-height: 75vh;
+  }
+}
