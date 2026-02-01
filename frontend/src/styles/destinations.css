@@ -1,10 +1,7 @@
 .hero--destinations {
-	background-position: center;
+  background-position: center;
 }
-.btn-extended{
-	margin-bottom: 16px ;
-	max-width: 180px;
-
-
-
+.btn-extended {
+  margin-bottom: 16px;
+  max-width: 180px;
 }

@@ -34,6 +34,7 @@ const Login = () => {
 
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
+      // REGEX for basic email validation
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email";
     }
@@ -66,7 +67,11 @@ const Login = () => {
 
   return (
     <>
-      <Hero title="Welcome Back to TravelMate" backgroundImage="/images/hero3.jpg"/>
+      <Hero
+        title="Welcome Back to TravelMate"
+        backgroundImage="/images/hero3.jpg"
+        variant="short"
+      />
       <section className="auth-section">
         <div className="auth-container">
           <div className="auth-card">
@@ -112,11 +117,7 @@ const Login = () => {
                 )}
               </div>
 
-              <button
-                type="submit"
-                className="btn-auth"
-                disabled={loading}
-              >
+              <button type="submit" className="btn-auth" disabled={loading}>
                 {loading ? "Logging in..." : "Log In"}
               </button>
             </form>

@@ -4,7 +4,7 @@ import Hero from "../components/Hero";
 import "../styles/mybookings.css";
 
 const MyBookings = () => {
-//   const { user } = useAuth();
+  //   const { user } = useAuth();
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -78,7 +78,7 @@ const MyBookings = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       if (!response.ok) {
@@ -97,7 +97,7 @@ const MyBookings = () => {
   const handleCancelBooking = async (bookingId) => {
     if (
       !window.confirm(
-        "Are you sure you want to cancel this booking? This action cannot be undone."
+        "Are you sure you want to cancel this booking? This action cannot be undone.",
       )
     ) {
       return;
@@ -114,7 +114,7 @@ const MyBookings = () => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ status: "cancelled" }),
-        }
+        },
       );
 
       if (!response.ok) {
@@ -125,8 +125,8 @@ const MyBookings = () => {
       // Update booking status in list
       setBookings(
         bookings.map((b) =>
-          b.id === bookingId ? { ...b, status: "cancelled" } : b
-        )
+          b.id === bookingId ? { ...b, status: "cancelled" } : b,
+        ),
       );
     } catch (err) {
       alert(`Error cancelling booking: ${err.message}`);
@@ -136,8 +136,8 @@ const MyBookings = () => {
 
   return (
     <>
-      <Hero 
-        title="My Bookings" 
+      <Hero
+        title="My Bookings"
         subtitle="View and manage your travel bookings"
         showButton={false}
         backgroundImage="/images/hero3.jpg"
@@ -152,7 +152,9 @@ const MyBookings = () => {
           ) : bookings.length === 0 ? (
             <div className="empty-state">
               <h3>No bookings yet</h3>
-              <p>Start planning your next adventure by booking a destination!</p>
+              <p>
+                Start planning your next adventure by booking a destination!
+              </p>
             </div>
           ) : (
             <div className="bookings-grid">
@@ -160,22 +162,31 @@ const MyBookings = () => {
                 <div key={booking.id} className="booking-card">
                   <div className="booking-card-header">
                     <h3>{booking.destination.name}</h3>
-                    <span className={`booking-status ${getStatusColor(booking.status)}`}>
-                      {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
+                    <span
+                      className={`booking-status ${getStatusColor(booking.status)}`}
+                    >
+                      {booking.status.charAt(0).toUpperCase() +
+                        booking.status.slice(1)}
                     </span>
                   </div>
 
                   <div className="booking-dates">
                     <div className="date-item">
                       <span className="date-label">Check-in</span>
-                      <span className="date-value">{formatDate(booking.arrivalDate)}</span>
+                      <span className="date-value">
+                        {formatDate(booking.arrivalDate)}
+                      </span>
                       {booking.arrivalTime && (
-                        <span className="time-value">{booking.arrivalTime}</span>
+                        <span className="time-value">
+                          {booking.arrivalTime}
+                        </span>
                       )}
                     </div>
                     <div className="date-item">
                       <span className="date-label">Check-out</span>
-                      <span className="date-value">{formatDate(booking.departureDate)}</span>
+                      <span className="date-value">
+                        {formatDate(booking.departureDate)}
+                      </span>
                     </div>
                   </div>
 
@@ -183,8 +194,10 @@ const MyBookings = () => {
                     <div className="detail-row">
                       <span className="detail-label">Guests:</span>
                       <span className="detail-value">
-                        {booking.guests.total} {booking.guests.total === 1 ? "guest" : "guests"}
-                        {booking.guests.childrenUnder5 > 0 && ` (${booking.guests.childrenUnder5} children)`}
+                        {booking.guests.total}{" "}
+                        {booking.guests.total === 1 ? "guest" : "guests"}
+                        {booking.guests.childrenUnder5 > 0 &&
+                          ` (${booking.guests.childrenUnder5} children)`}
                       </span>
                     </div>
                     <div className="detail-row">
@@ -197,7 +210,10 @@ const MyBookings = () => {
                     <div className="detail-row">
                       <span className="detail-label">Nights:</span>
                       <span className="detail-value">
-                        {calculateNights(booking.arrivalDate, booking.departureDate)}
+                        {calculateNights(
+                          booking.arrivalDate,
+                          booking.departureDate,
+                        )}
                       </span>
                     </div>
                   </div>
@@ -205,22 +221,28 @@ const MyBookings = () => {
                   <div className="booking-pricing">
                     <div className="price-label">Total Price</div>
                     <div className="price-amount">
-                      {booking.pricing.currency} ${booking.pricing.total.toLocaleString()}
+                      {booking.pricing.currency} $
+                      {booking.pricing.total.toLocaleString()}
                     </div>
                   </div>
 
                   <div className="booking-contact">
                     <p>
-                      <strong>Primary Guest:</strong> {booking.guests.primaryGuest}
+                      <strong>Primary Guest:</strong>{" "}
+                      {booking.guests.primaryGuest}
                     </p>
                     <p>
                       <strong>Email:</strong>{" "}
-                      <a href={`mailto:${booking.contact.email}`}>{booking.contact.email}</a>
+                      <a href={`mailto:${booking.contact.email}`}>
+                        {booking.contact.email}
+                      </a>
                     </p>
                     {booking.contact.phone && (
                       <p>
                         <strong>Phone:</strong>{" "}
-                        <a href={`tel:${booking.contact.phone}`}>{booking.contact.phone}</a>
+                        <a href={`tel:${booking.contact.phone}`}>
+                          {booking.contact.phone}
+                        </a>
                       </p>
                     )}
                   </div>

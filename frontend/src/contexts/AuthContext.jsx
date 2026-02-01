@@ -17,8 +17,8 @@ export const AuthProvider = ({ children }) => {
         setUser(JSON.parse(userData));
       } catch (err) {
         localStorage.removeItem("authToken");
-          localStorage.removeItem("userData");
-          console.log(err);
+        localStorage.removeItem("userData");
+        console.log(err);
       }
     }
     setLoading(false);
@@ -90,7 +90,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, error, register, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, loading, error, register, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

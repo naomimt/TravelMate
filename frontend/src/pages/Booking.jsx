@@ -60,13 +60,13 @@ const Booking = () => {
           ...prev,
           numPeople: nextPeople,
           companionNames: defaultGroupNames(companionCount),
-          numChildren: Math.min(prev.numChildren, nextPeople),
+          numChildren: 0,
         };
       }
       if (field === "numChildren") {
         const nextChildren = Math.min(
           Math.max(Number(value) || 0, 0),
-          prev.numPeople
+          prev.numPeople,
         );
         return { ...prev, numChildren: nextChildren };
       }
@@ -113,19 +113,22 @@ const Booking = () => {
       },
       createdAt: new Date().toISOString(),
     }),
-    [form, nights, totalPrice, destinationLabel, destinationParam]
+    [form, nights, totalPrice, destinationLabel, destinationParam],
   );
 
   const validate = () => {
     const nextErrors = {};
 
     if (!form.arrivalDate) nextErrors.arrivalDate = "Arrival date is required";
-    if (!form.departureDate) nextErrors.departureDate = "Departure date is required";
+    if (!form.departureDate)
+      nextErrors.departureDate = "Departure date is required";
     if (form.arrivalDate && form.departureDate && nights < 1) {
-      nextErrors.departureDate = "Departure must be at least 1 day after arrival";
+      nextErrors.departureDate =
+        "Departure must be at least 1 day after arrival";
     }
 
-    if (!form.leadName.trim()) nextErrors.leadName = "Primary guest name is required";
+    if (!form.leadName.trim())
+      nextErrors.leadName = "Primary guest name is required";
 
     if (!form.email.trim()) {
       nextErrors.email = "Email is required";
@@ -142,7 +145,8 @@ const Booking = () => {
       nextErrors.numChildren = "Children cannot exceed total guests";
     }
 
-    if (!form.acceptTerms) nextErrors.acceptTerms = "Please accept the policies";
+    if (!form.acceptTerms)
+      nextErrors.acceptTerms = "Please accept the policies";
 
     return nextErrors;
   };
@@ -173,7 +177,7 @@ const Booking = () => {
       }
 
       setSuccessMessage("Booking submitted successfully!");
-      
+
       // Navigate to confirmation page after a short delay
       setTimeout(() => {
         const encoded = encodeURIComponent(destinationParam);
@@ -187,7 +191,7 @@ const Booking = () => {
             bookingId: data.data.id,
           },
         });
-      }, 1500);
+      }, 200);
     } catch (err) {
       setErrors({ submit: err.message });
       console.error("Booking error:", err);
@@ -212,7 +216,8 @@ const Booking = () => {
             <div className="booking-card">
               <h2 id="booking-form-title">Book your hotel</h2>
               <p className="booking-subtitle">
-                Share your trip window and guests. We&apos;ll forward the details to confirm your stay.
+                Share your trip window and guests. We&apos;ll forward the
+                details to confirm your stay.
               </p>
 
               <form className="booking-form">
@@ -220,7 +225,9 @@ const Booking = () => {
                   <div className="booking-error-message">{errors.submit}</div>
                 )}
                 {successMessage && (
-                  <div className="booking-success-message">{successMessage}</div>
+                  <div className="booking-success-message">
+                    {successMessage}
+                  </div>
                 )}
 
                 <div className="field-pair">
@@ -389,7 +396,9 @@ const Booking = () => {
                       </div>
                     </>
                   ) : (
-                    <p className="summary-placeholder">Select arrival and departure dates to calculate price</p>
+                    <p className="summary-placeholder">
+                      Select arrival and departure dates to calculate price
+                    </p>
                   )}
                 </div>
 
@@ -420,12 +429,15 @@ const Booking = () => {
             <div className="booking-card booking-card--info">
               <h3>What happens next?</h3>
               <p className="booking-subtitle">
-                We’ll share these details with the hotel team so they can prepare your room and follow up if needed.
+                We’ll share these details with the hotel team so they can
+                prepare your room and follow up if needed.
               </p>
               <ul className="info-list">
                 <li>Keep your phone reachable for arrival coordination.</li>
                 <li>Bring a valid ID matching the primary guest name.</li>
-                <li>Special requests are subject to availability at check-in.</li>
+                <li>
+                  Special requests are subject to availability at check-in.
+                </li>
               </ul>
             </div>
           </div>

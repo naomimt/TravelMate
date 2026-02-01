@@ -3,7 +3,7 @@ import { parse } from "node:url";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { User, Trip, Booking, Contact, sequelize } from "../models/index.js";
+import { User, Booking, Contact, sequelize } from "../models/index.js";
 
 dotenv.config();
 
@@ -156,7 +156,6 @@ endpoint("POST", "/api/auth/login", async (req, res) => {
         error: "Missing required fields: email, password",
       });
     }
-
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
@@ -192,201 +191,6 @@ endpoint("POST", "/api/auth/login", async (req, res) => {
     sendResponse(res, 500, {
       success: false,
       error: "Failed to login",
-    });
-  }
-});
-
-// GET /api/trips - Get all trips
-endpoint("GET", "/api/trips", async (req, res) => {
-  try {
-    const trips = await Trip.findAll({
-      attributes: [
-        "id",
-        "title",
-        "price",
-        "duration",
-        "description",
-        "availableSlots",
-      ],
-      order: [["createdAt", "DESC"]],
-    });
-
-    sendResponse(res, 200, {
-      success: true,
-      data: trips,
-    });
-  } catch (err) {
-    sendResponse(res, 500, {
-      success: false,
-      error: "Failed to retrieve trips",
-    });
-  }
-});
-
-// GET /api/trips/:id - Get single trip
-endpoint("GET", "/api/trips/([0-9]+)", async (req, res, params) => {
-  try {
-    const trip = await Trip.findByPk(params[0], {
-      attributes: [
-        "id",
-        "title",
-        "price",
-        "duration",
-        "description",
-        "availableSlots",
-      ],
-    });
-
-    if (!trip) {
-      return sendResponse(res, 404, {
-        success: false,
-        error: "Trip not found",
-      });
-    }
-
-    sendResponse(res, 200, {
-      success: true,
-      data: trip,
-    });
-  } catch (err) {
-    sendResponse(res, 500, {
-      success: false,
-      error: "Failed to retrieve trip",
-    });
-  }
-});
-
-// POST /api/trips - [ADMIN] Create a new trip
-endpoint("POST", "/api/trips", async (req, res) => {
-  try {
-    if (!verifyAdminToken(req)) {
-      return sendResponse(res, 401, {
-        success: false,
-        error: "Unauthorized - admin access required",
-      });
-    }
-
-    const { title, price, duration, description, available_slots } =
-      await parseJsonBody(req);
-
-    if (
-      !title ||
-      !price ||
-      !duration ||
-      !description ||
-      available_slots === undefined
-    ) {
-      return sendResponse(res, 400, {
-        success: false,
-        error:
-          "Missing required fields: title, price, duration, description, available_slots",
-      });
-    }
-
-    const trip = await Trip.create({
-      title,
-      price,
-      duration,
-      description,
-      availableSlots: available_slots,
-    });
-
-    sendResponse(res, 201, {
-      success: true,
-      message: "Trip created successfully",
-      data: {
-        id: trip.id,
-        title: trip.title,
-        price: trip.price,
-        duration: trip.duration,
-        description: trip.description,
-        availableSlots: trip.availableSlots,
-      },
-    });
-  } catch (err) {
-    sendResponse(res, 500, {
-      success: false,
-      error: "Failed to create trip",
-    });
-  }
-});
-
-// PATCH /api/trips/:id - [ADMIN] Update trip
-endpoint("PATCH", "/api/trips/([0-9]+)", async (req, res, params) => {
-  try {
-    if (!verifyAdminToken(req)) {
-      return sendResponse(res, 401, {
-        success: false,
-        error: "Unauthorized - admin access required",
-      });
-    }
-
-    const trip = await Trip.findByPk(params[0]);
-
-    if (!trip) {
-      return sendResponse(res, 404, {
-        success: false,
-        error: "Trip not found",
-      });
-    }
-
-    const { title, price, duration, description, available_slots } =
-      await parseJsonBody(req);
-
-    if (title !== undefined) trip.title = title;
-    if (price !== undefined) trip.price = price;
-    if (duration !== undefined) trip.duration = duration;
-    if (description !== undefined) trip.description = description;
-    if (available_slots !== undefined) trip.availableSlots = available_slots;
-
-    await trip.save();
-
-    sendResponse(res, 200, {
-      success: true,
-      message: "Trip updated successfully",
-      data: {
-        id: trip.id,
-        title: trip.title,
-        price: trip.price,
-        duration: trip.duration,
-        description: trip.description,
-        availableSlots: trip.availableSlots,
-      },
-    });
-  } catch (err) {
-    sendResponse(res, 500, {
-      success: false,
-      error: "Failed to update trip",
-    });
-  }
-});
-
-// DELETE /api/trips/:id - [ADMIN] Delete trip
-endpoint("DELETE", "/api/trips/([0-9]+)", async (req, res, params) => {
-  try {
-    if (!verifyAdminToken(req)) {
-      return sendResponse(res, 401, {
-        success: false,
-        error: "Unauthorized - admin access required",
-      });
-    }
-
-    const trip = await Trip.findByPk(params[0]);
-
-    if (!trip) {
-      return sendResponse(res, 404, {
-        success: false,
-        error: "Trip not found",
-      });
-    }
-
-    await trip.destroy();
-
-    sendResponse(res, 204, {});
-  } catch (err) {
-    sendResponse(res, 500, {
-      success: false,
-      error: "Failed to delete trip",
     });
   }
 });
